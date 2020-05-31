@@ -18,21 +18,25 @@ void setup() {
 }
 
 void loop() {
+  int tidSomSkalHaGaatt = 180000;
   // put your main code here, to run repeatedly:
   int tilstandKnapp = digitalRead(knapp);
   int tilstandReset = digitalRead(reset);
-  unsigned long tidVentet = 10000;
   // Sjekk om knappen trykkes paa
   if (tilstandKnapp == HIGH) {
     endreLysPaa();
-  } 
+  }
+  int variabelLys = millis();
+  if ((millis() - variabelLys) >= tidSomSkalHaGaatt) {
+        //endreLysAv();
+        digitalWrite(lysKunde, LOW);
+        digitalWrite(lysAnsatt, LOW);
+        Serial.println("tid ferdig");
+    } 
   if (tilstandReset == HIGH) {
       endreLysReset();
       Serial.println("LYS RESET");
   }
-  //if (tilstandReset != HIGH && (millis() - tidVentet) > 8000) {
-    //endreLysAv();
-  //}
 }
 
 
@@ -99,3 +103,4 @@ void femSekunder() {
         lydAv();   
     }
   }
+}
