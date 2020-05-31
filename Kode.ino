@@ -58,7 +58,6 @@ skru seg av, og eventuelt piezoen ogsaa.*/
 void endreLysReset() {
   digitalWrite(lysKunde, LOW);
   digitalWrite(lysAnsatt, LOW);
-  //Serial.println("LYS RESET");
 }
 
 /*Dersom ingen ansatt kommer for aa hjelpe og reset-knappen
